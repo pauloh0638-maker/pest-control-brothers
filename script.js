@@ -1,9 +1,11 @@
-// Substitua pelo WhatsApp verdadeiro da empresa (55 + DDD + número).
+// Configure o WhatsApp real da empresa: 55 + DDD + número, apenas dígitos.
 const WHATSAPP_NUMBER = '';
 const message = encodeURIComponent('Olá! Gostaria de solicitar um orçamento da Pest Control Brothers.');
-document.querySelectorAll('a[href*="wa.me"], [data-whatsapp]').forEach(el => {
-  el.addEventListener('click', event => {
-    if (!WHATSAPP_NUMBER) { event.preventDefault(); alert('WhatsApp ainda não configurado. Adicione o número em script.js.'); return; }
-    event.preventDefault(); window.open('https://wa.me/'+WHATSAPP_NUMBER+'?text='+message,'_blank','noopener,noreferrer');
+document.getElementById('year').textContent = new Date().getFullYear();
+document.querySelectorAll('.whatsapp-link').forEach(el => {
+  el.addEventListener('click', e => {
+    e.preventDefault();
+    if (!WHATSAPP_NUMBER) { alert('WhatsApp ainda não configurado. Adicione o número em script.js.'); return; }
+    window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + message, '_blank', 'noopener,noreferrer');
   });
 });
